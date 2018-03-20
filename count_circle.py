@@ -1,4 +1,4 @@
-
+# no time to comment every line :)
 import numpy as np
 import cv2
 image1=cv2.imread('straw7.jpg')
@@ -57,18 +57,12 @@ if len(cnts) > 0:
             dil_cropped = cv2.morphologyEx(dil_cropped, cv2.MORPH_CLOSE, se1)
             dil_cropped=cv2.dilate(dil_cropped,(3,3),iterations=4)
 
-            
-            
-
             se1 = cv2.getStructuringElement(cv2.MORPH_RECT, (5,5))
             mask = cv2.morphologyEx(dil_cropped, cv2.MORPH_CLOSE, se1)
             mask=cv2.erode(mask,(7,7),iterations=2)
             mask=cv2.dilate(mask,(5,5),iterations=4)
             se1 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
             mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, se1)
-
-            cv2.imshow('Output_mask', mask)
-            cv2.waitKey(0)
             mask=~mask
             # make border around image
             mask = cv2.copyMakeBorder(mask, top=25, bottom=25, left=25,
